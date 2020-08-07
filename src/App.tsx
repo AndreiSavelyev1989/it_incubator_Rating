@@ -4,18 +4,28 @@ import Rating from './components/Rating/Rating';
 import Accordion from './components/Accordion/Accordion';
 
 function App() {
+  console.log('App rendering');
+  
   return (
     <div>
-     <AppTitle title={'This is App component'}/>
+     <AppTitle title={'This is App title component 1'}/>
      <Rating value={3}/>
-     <Accordion title ={'Menu:'}/>
+     <Accordion titleValue={'Menu:'} collapsed={false}/>
+     <AppTitle title={'This is App title component 2'}/>
      <Rating value={4}/>
+     <Accordion titleValue={'Users:'} collapsed={true}/>
+
     </div>
   );
 }
 
+type AppTitlePropsType = {
+  title: string
+}
 
-function AppTitle (props:any) {
+function AppTitle (props:AppTitlePropsType) {
+  console.log('AppTitle rendering');
+  
   return (
     <div>{props.title}</div>
   )
