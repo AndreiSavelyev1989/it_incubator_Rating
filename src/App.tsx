@@ -12,7 +12,11 @@ function App() {
      <Rating value={3}/>
      <Accordion titleValue={'Menu:'} collapsed={false}/>
      <AppTitle title={'This is App title component 2'}/>
+     <Rating value={1}/>
+     <Rating value={2}/>
+     <Rating value={3}/>
      <Rating value={4}/>
+     <Rating value={5}/>
      <Accordion titleValue={'Users:'} collapsed={true}/>
 
     </div>
