@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 function OnOff(){
-
+    console.log("OnOff rendering");
     let [on, setOn] = useState(false);
 
     let onStyle = {
