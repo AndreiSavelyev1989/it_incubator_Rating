@@ -1,19 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 
-type OnOffPropsType = {
-    on: boolean
-    setOn: (on: boolean) => void
-}
-
-function OnOff(props: OnOffPropsType){
+function UnControlledOnOff(){
     console.log("OnOff rendering");
+    let [on, setOn] = useState(false);
 
     let onStyle = {
         width: "30px",
         height: "30px",
         border: "1px solid black",
         display: "inline-block",
-        backgroundColor: props.on ? "green" : "white"
+        backgroundColor: on ? "green" : "white"
     }
     let offStyle = {
         width: "30px",
@@ -21,7 +17,7 @@ function OnOff(props: OnOffPropsType){
         border: "1px solid black",
         display: "inline-block",
         marginLeft: "1px",
-        backgroundColor: props.on ? "white" : "red"
+        backgroundColor: on ? "white" : "red"
     }
     let conditionStyle = {
         width: "15px",
@@ -30,16 +26,16 @@ function OnOff(props: OnOffPropsType){
         border: "1px solid black",
         display: "inline-block",
         marginLeft: "5px",
-        backgroundColor: props.on ? "green" : "red"
+        backgroundColor: on ? "green" : "red"
     }
 
     return (
         <div>
-            <button style={onStyle} onClick={() => props.setOn(!props.on)}>On</button>
-            <button style={offStyle} onClick={() => props.setOn(!props.on)}>Off</button>
+            <button style={onStyle} onClick={() => setOn(true)}>On</button>
+            <button style={offStyle} onClick={() => setOn(false)}>Off</button>
             <div style={conditionStyle}/>
         </div>
     )
 }
 
-export default OnOff;
+export default UnControlledOnOff;

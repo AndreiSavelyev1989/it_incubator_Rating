@@ -1,7 +1,9 @@
 import React from 'react'
+import {RatingStarValueType} from "../../App";
 
 type RatingPropsType = {
-    value: 0 | 1 | 2 | 3 | 4 | 5
+    ratingStarValue: RatingStarValueType
+    setRatingStarValue: (ratingStarValue: RatingStarValueType) => void
 }
 
 function Rating(props: RatingPropsType) {
@@ -9,11 +11,26 @@ function Rating(props: RatingPropsType) {
 
     return (
         <div>
-            <Star selected={props.value > 0}/>
-            <Star selected={props.value > 1}/>
-            <Star selected={props.value > 2}/>
-            <Star selected={props.value > 3}/>
-            <Star selected={props.value > 4}/>
+            <Star
+                selected={props.ratingStarValue > 0}
+                ratingStarValue={1}
+                setRatingStarValue={props.setRatingStarValue}/>
+                <Star
+                selected={props.ratingStarValue > 1}
+                ratingStarValue={2}
+                setRatingStarValue={props.setRatingStarValue}/>
+                <Star
+                selected={props.ratingStarValue > 2}
+                ratingStarValue={3}
+                setRatingStarValue={props.setRatingStarValue}/>
+                <Star
+                selected={props.ratingStarValue > 3}
+                ratingStarValue={4}
+                setRatingStarValue={props.setRatingStarValue}/>
+                <Star
+                selected={props.ratingStarValue > 4}
+                ratingStarValue={5}
+                setRatingStarValue={props.setRatingStarValue}/>
         </div>
     )
 }
@@ -21,6 +38,8 @@ function Rating(props: RatingPropsType) {
 
 type StarPropsType = {
     selected: boolean
+    ratingStarValue: RatingStarValueType
+    setRatingStarValue: (ratingStarValue: RatingStarValueType) => void
 }
 
 function Star(props: StarPropsType) {
@@ -30,7 +49,8 @@ function Star(props: StarPropsType) {
     // } else {
     //     return <span>star </span>
     // }
-    return props.selected ? <span><b>star </b></span> : <span>star </span>
+    const onStarClick = () => props.setRatingStarValue(props.ratingStarValue)
+    return <span onClick={onStarClick}>{props.selected ? <b>star </b> : " star"}</span>
 }
 
 export default Rating;

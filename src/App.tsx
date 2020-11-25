@@ -1,34 +1,40 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Rating from './components/Rating/Rating';
 import Accordion from './components/Accordion/Accordion';
-import OnOff from "./components/OnOff/OnOff";
+import UnControlledOnOff from "./components/UnControlledOnOff/UnControlledOnOff";
 import UnControlledAccordion from "./components/UnControlledAccordion/UnControlledAccordion";
 import UnControlledRating from "./components/UnControlledRating/UnControlledRating";
+import OnOff from "./components/OnOff/OnOff";
+
+export type RatingStarValueType = 0 | 1 | 2 | 3 | 4 | 5
 
 function App() {
     console.log('App rendering');
+    let [ratingStarValue, setRatingStarValue] = useState<RatingStarValueType>(0)
+    let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
+    let [on, setOn] = useState<boolean>(false);
 
     return (
         <div>
+            <h3>Controlled components</h3>
             <AppTitle title={'This is App title component 1'}/>
-            <Rating value={3}/>
-            <Accordion titleValue={'Menu:'} collapsed={false}/>
+            <Rating ratingStarValue={ratingStarValue}
+                    setRatingStarValue={setRatingStarValue}/>
+            <Accordion titleValue={'Menu:'}
+                       setAccordionCollapsed={setAccordionCollapsed}
+                       collapsed={accordionCollapsed}/>
             <AppTitle title={'This is App title component 2'}/>
-            <Rating value={1}/>
-            <Rating value={2}/>
-            <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
-            <Accordion titleValue={'Users:'} collapsed={true}/>
+            <OnOff on={on} setOn={setOn}/>
 
-            <OnOff/>
-            <OnOff/>
-            <OnOff/>
-
+            <hr/>
+            <h3>Uncontrolled components</h3>
             <UnControlledAccordion titleValue={'Menu:'} />
             <UnControlledAccordion titleValue={'Users:'} />
-
+            <UnControlledOnOff />
+            <UnControlledOnOff />
+            <UnControlledOnOff />
+            <UnControlledRating />
             <UnControlledRating />
 
         </div>
@@ -41,7 +47,6 @@ type AppTitlePropsType = {
 
 function AppTitle(props: AppTitlePropsType) {
     console.log('AppTitle rendering');
-
     return (
         <div>{props.title}</div>
     )
