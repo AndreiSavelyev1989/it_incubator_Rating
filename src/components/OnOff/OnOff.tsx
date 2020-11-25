@@ -33,10 +33,12 @@ function OnOff(props: OnOffPropsType){
         backgroundColor: props.on ? "green" : "red"
     }
 
+    const onSwitchChange = () => { props.setOn(!props.on)}
+    
     return (
         <div>
-            <button style={onStyle} onClick={() => props.setOn(!props.on)}>On</button>
-            <button style={offStyle} onClick={() => props.setOn(!props.on)}>Off</button>
+            <button style={onStyle} onClick={onSwitchChange}>On</button>
+            <button style={offStyle} onClick={onSwitchChange}>Off</button>
             <div style={conditionStyle}/>
         </div>
     )

@@ -13,7 +13,7 @@ function App() {
     console.log('App rendering');
     let [ratingStarValue, setRatingStarValue] = useState<RatingStarValueType>(0)
     let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
-    let [on, setOn] = useState<boolean>(false);
+    let [onSwitch, setOnSwitch] = useState<boolean>(false);
 
     return (
         <div>
@@ -25,7 +25,7 @@ function App() {
                        setAccordionCollapsed={setAccordionCollapsed}
                        collapsed={accordionCollapsed}/>
             <AppTitle title={'This is App title component 2'}/>
-            <OnOff on={on} setOn={setOn}/>
+            <OnOff on={onSwitch} setOn={setOnSwitch}/> {onSwitch.toString()}
 
             <hr/>
             <h3>Uncontrolled components</h3>
