@@ -1,18 +1,22 @@
 import React, {useState} from 'react'
+import {RatingStarValueType} from "../../App";
 
-type RatingPropsType = {}
+type RatingPropsType = {
+    defaulValue?: RatingStarValueType
+    onChange: (value: RatingStarValueType) => void
+}
 
-function UnControlledRating(props: RatingPropsType) {
+export function UnControlledRating(props: RatingPropsType) {
     console.log('Rating rendering');
-    let [starValue, setStarValue] = useState(0)
+    let [starValue, setStarValue] = useState(props.defaulValue ? props.defaulValue : 0)
 
     return (
         <div>
-            <Star selected={starValue > 0} setStarValue={setStarValue} starValue={1}/>
-            <Star selected={starValue > 1} setStarValue={setStarValue} starValue={2}/>
-            <Star selected={starValue > 2} setStarValue={setStarValue} starValue={3}/>
-            <Star selected={starValue > 3} setStarValue={setStarValue} starValue={4}/>
-            <Star selected={starValue > 4} setStarValue={setStarValue} starValue={5}/>
+            <Star selected={starValue > 0} setStarValue={setStarValue} starValue={1} onChange={props.onChange}/>
+            <Star selected={starValue > 1} setStarValue={setStarValue} starValue={2} onChange={props.onChange}/>
+            <Star selected={starValue > 2} setStarValue={setStarValue} starValue={3} onChange={props.onChange}/>
+            <Star selected={starValue > 3} setStarValue={setStarValue} starValue={4} onChange={props.onChange}/>
+            <Star selected={starValue > 4} setStarValue={setStarValue} starValue={5} onChange={props.onChange}/>
         </div>
     )
 }
@@ -22,13 +26,16 @@ type StarPropsType = {
     selected: boolean
     starValue: 1 | 2 | 3 | 4 | 5
     setStarValue: (starValue: 1 | 2 | 3 | 4 | 5) => void
+    onChange: (value: RatingStarValueType) => void
 }
 
 
 function Star(props: StarPropsType) {
     console.log('Star rendering');
-    const onStarClick = () => props.setStarValue(props.starValue)
+    const onStarClick = () => {
+        props.setStarValue(props.starValue)
+        props.onChange(props.starValue)
+    }
     return <span onClick={onStarClick}>{props.selected ? <b>star </b> : " star"}</span>
 }
 
-export default UnControlledRating;

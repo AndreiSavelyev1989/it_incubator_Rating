@@ -6,7 +6,7 @@ type RatingPropsType = {
     setRatingStarValue: (ratingStarValue: RatingStarValueType) => void
 }
 
-function Rating(props: RatingPropsType) {
+export function Rating(props: RatingPropsType) {
     console.log('Rating rendering');
 
     return (
@@ -52,5 +52,3 @@ function Star(props: StarPropsType) {
     const onStarClick = () => props.setRatingStarValue(props.ratingStarValue)
     return <span onClick={onStarClick}>{props.selected ? <b>star </b> : " star"}</span>
 }
-
-export default Rating;

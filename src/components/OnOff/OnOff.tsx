@@ -5,7 +5,7 @@ type OnOffPropsType = {
     setOn: (on: boolean) => void
 }
 
-function OnOff(props: OnOffPropsType){
+export function OnOff(props: OnOffPropsType){
     console.log("OnOff rendering");
 
     let onStyle = {
@@ -34,7 +34,7 @@ function OnOff(props: OnOffPropsType){
     }
 
     const onSwitchChange = () => { props.setOn(!props.on)}
-    
+
     return (
         <div>
             <button style={onStyle} onClick={onSwitchChange}>On</button>
@@ -43,5 +43,3 @@ function OnOff(props: OnOffPropsType){
         </div>
     )
 }
-
-export default OnOff;

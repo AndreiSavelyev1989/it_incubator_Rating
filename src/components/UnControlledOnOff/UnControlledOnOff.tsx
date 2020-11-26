@@ -1,8 +1,12 @@
 import React, {useState} from "react";
 
-function UnControlledOnOff(){
+type UnControlledOnOffPropsType = {
+    defaultValue?: boolean
+    onChange: (value: boolean) => void
+}
+export function UnControlledOnOff(props: UnControlledOnOffPropsType){
     console.log("OnOff rendering");
-    let [on, setOn] = useState(false);
+    let [on, setOn] = useState(props.defaultValue ? props.defaultValue : false);
 
     let onStyle = {
         width: "30px",
@@ -29,13 +33,16 @@ function UnControlledOnOff(){
         backgroundColor: on ? "green" : "red"
     }
 
+    const onChangeSwitch = () => {
+        setOn(!on)
+        props.onChange(!on)
+    }
     return (
         <div>
-            <button style={onStyle} onClick={() => setOn(true)}>On</button>
-            <button style={offStyle} onClick={() => setOn(false)}>Off</button>
+            <button style={onStyle} onClick={onChangeSwitch}>On</button>
+            <button style={offStyle} onClick={onChangeSwitch}>Off</button>
             <div style={conditionStyle}/>
         </div>
     )
 }
 
-export default UnControlledOnOff;
