@@ -1,0 +1,18 @@
+.select {
+    border: 1px solid black;
+    padding-left: 5px;
+    display: inline-block;
+    min-height: 20px;
+    min-width: 20px;
+}
+
+.items {
+    position: absolute;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.item {
+    background: #1ea7fd;
+    color: white;
+}

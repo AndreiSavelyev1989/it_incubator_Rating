@@ -6,6 +6,7 @@ import UnControlledOnOff from "./components/UnControlledOnOff/UnControlledOnOff"
 import UnControlledAccordion from "./components/UnControlledAccordion/UnControlledAccordion";
 import UnControlledRating from "./components/UnControlledRating/UnControlledRating";
 import OnOff from "./components/OnOff/OnOff";
+import {Select} from "./components/Select/Select";
 
 export type RatingStarValueType = 0 | 1 | 2 | 3 | 4 | 5
 
@@ -26,6 +27,7 @@ function App() {
                        collapsed={accordionCollapsed}/>
             <AppTitle title={'This is App title component 2'}/>
             <OnOff on={onSwitch} setOn={setOnSwitch}/> {onSwitch.toString()}
+            <Select />
 
             <hr/>
             <h3>Uncontrolled components</h3>
