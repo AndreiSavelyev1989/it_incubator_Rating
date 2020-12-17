@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 type UnControlledOnOffPropsType = {
-    defaultValue?: boolean
+    defaultValue: boolean
     onChange: (value: boolean) => void
 }
 export function UnControlledOnOff(props: UnControlledOnOffPropsType){
