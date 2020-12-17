@@ -5,7 +5,7 @@ type OnOffPropsType = {
     setOn: (on: boolean) => void
 }
 
-export function OnOff(props: OnOffPropsType){
+export const OnOff = React.memo((props: OnOffPropsType) => {
     console.log("OnOff rendering");
 
     let onStyle = {
@@ -42,4 +42,4 @@ export function OnOff(props: OnOffPropsType){
             <div style={conditionStyle}/>
         </div>
     )
-}
+})

@@ -4,7 +4,7 @@ type UnControlledOnOffPropsType = {
     defaultValue: boolean
     onChange: (value: boolean) => void
 }
-export function UnControlledOnOff(props: UnControlledOnOffPropsType){
+export const UnControlledOnOff = React.memo((props: UnControlledOnOffPropsType) => {
     console.log("OnOff rendering");
     let [on, setOn] = useState(props.defaultValue ? props.defaultValue : false);
 
@@ -44,5 +44,5 @@ export function UnControlledOnOff(props: UnControlledOnOffPropsType){
             <div style={conditionStyle}/>
         </div>
     )
-}
+})
 

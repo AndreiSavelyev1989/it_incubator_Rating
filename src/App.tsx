@@ -24,7 +24,9 @@ function App() {
                     setRatingStarValue={setRatingStarValue}/>
             <Accordion titleValue={'Menu:'}
                        setAccordionCollapsed={setAccordionCollapsed}
-                       collapsed={accordionCollapsed} items={[]} onValueClick={() => null}/>
+                       collapsed={accordionCollapsed}
+                       items={[]}
+                       onValueClick={() => null}/>
             <AppTitle title={'This is App title component 2'}/>
             <OnOff on={onSwitch} setOn={setOnSwitch}/> {onSwitch.toString()}
             <Select  items={[{id: 1, value: 'Minsk'}, {id: 2, value: 'Moscow'}]}
