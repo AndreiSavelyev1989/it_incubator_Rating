@@ -7,6 +7,7 @@ import {UnControlledAccordion} from "./components/UnControlledAccordion/UnContro
 import {UnControlledRating} from "./components/UnControlledRating/UnControlledRating";
 import {OnOff} from "./components/OnOff/OnOff";
 import {Select} from "./components/Select/Select";
+import {Clock} from "./components/Clock/Clock";
 
 export type RatingStarValueType = 0 | 1 | 2 | 3 | 4 | 5
 
@@ -42,6 +43,8 @@ function App() {
             {/*<UnControlledOnOff />*/}
             {/*<UnControlledRating />*/}
             <UnControlledRating onChange={() => null}/>
+            <hr/>
+            <Clock/>
 
         </div>
     );
