@@ -8,6 +8,7 @@ import {UnControlledRating} from "./components/UnControlledRating/UnControlledRa
 import {OnOff} from "./components/OnOff/OnOff";
 import {Select} from "./components/Select/Select";
 import {Clock} from "./components/Clock/Clock";
+import {AnalogClock} from "./components/Clock/AnalogClock/AnalogClock";
 
 export type RatingStarValueType = 0 | 1 | 2 | 3 | 4 | 5
 
@@ -17,6 +18,7 @@ function App() {
     const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
     const [onSwitch, setOnSwitch] = useState<boolean>(false);
     const [selectValue, setSelectValue] = useState("Moscow")
+    const [date, setDate] = useState(new Date())
     return (
         <div>
             <h3>Controlled components</h3>
@@ -44,7 +46,9 @@ function App() {
             {/*<UnControlledRating />*/}
             <UnControlledRating onChange={() => null}/>
             <hr/>
-            <Clock/>
+            <Clock date={date} setDate={setDate}/>
+            <hr/>
+            <AnalogClock date={date}/>
 
         </div>
     );

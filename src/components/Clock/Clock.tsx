@@ -1,21 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
+import {AnalogClock} from "./AnalogClock/AnalogClock";
+import {DigitalClock} from "./DigitalClock/DigitalClock";
 
-const addZeroBeforeTime = (time: number) => time < 10 ? `0${time}` : time
+export type ClockViewPropsType = {
+    mode?: 'analog' | 'digital'
+    date: Date
+    setDate: (time: Date) => void
+}
 
-export const Clock = () => {
-    let currentTime = new Date()
-    let hours = currentTime.getHours()
-    let minutes = currentTime.getMinutes()
-    let seconds = currentTime.getSeconds()
-
-    let [currentHour, setCurrentHour] = useState(hours)
-    let [currentMinutes, setCurrentMinutes] = useState(minutes)
-    let [currentSeconds, setCurrentSeconds] = useState(seconds)
-
+export const Clock: React.FC<ClockViewPropsType> = (props) => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             console.log('tick2')
-            setCurrentSeconds(state => state + 1)
+            props.setDate(new Date())
         }, 1000)
 
         return () => {
@@ -23,22 +20,16 @@ export const Clock = () => {
         }
     }, [])
 
-    if(currentSeconds === 60){
-        setCurrentSeconds(0)
-        setCurrentMinutes(currentMinutes + 1)
-    }
-    if(currentMinutes === 60){
-        setCurrentMinutes(0)
-        setCurrentHour(currentHour + 1)
-    }
-    if(currentHour === 24){
-        setCurrentHour(0)
+    let view;
+    switch (props.mode) {
+        case "analog":
+            view = <AnalogClock date={props.date}/>
+        case "digital":
+            view = <DigitalClock date={props.date}/>
+        default:
+            view = <DigitalClock date={props.date}/>
     }
     return (
-        <div>
-            <span>{addZeroBeforeTime(currentHour)}</span>:
-            <span>{addZeroBeforeTime(currentMinutes)}</span>:
-            <span>{addZeroBeforeTime(currentSeconds)}</span>
-        </div>
+        <div>{view}</div>
     )
 }
